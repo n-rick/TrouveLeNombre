@@ -36,7 +36,6 @@ const play = () => {
     tricherBtn.style.display = "none";
     essais.textContent = ` Tu as ${vies} essais !`;
     // vérification test
-    // console.log(randomNumber);
 
     // Actualisation à chaque essai
     formulaire.addEventListener('submit', (elmt) => {
@@ -81,6 +80,7 @@ const play = () => {
             essayerBtn.style.display = "none";
             message.textContent = `Vous avez perdu 😢 ! La réponse était ${randomNumber}`;
             rejouerBtn.style.display = "block";
+            tricherBtn.style.display = "none";
         }
     }
 
