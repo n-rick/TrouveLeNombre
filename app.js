@@ -10,7 +10,8 @@ const body = document.getElementsByTagName('body')[0];
 
 
 // Modèle de coeurs
-const coeurVide = '<ion-icon name="heart-dislike - outline"></ion-icon>';
+const coeurVide = '<ion-icon name="heart-dislike-outline"></ion-icon>';
+
 const coeurPlein = '<ion-icon id="coeurPlein" name="heart"></ion-icon>';
 
 // Fond brulant / froid
@@ -64,6 +65,7 @@ const play = () => {
             verifyLoose();
         }
 
+        actualiserCoeur(vies);
     })
     const verifyLoose = () => {
         if (vies === 0) {
@@ -74,4 +76,21 @@ const play = () => {
             rejouerBtn.style.display = "block";
         }
     }
+
+    const actualiserCoeur = (vies) => {
+        divVies.innerHTML = "";
+        let tableauDeVies = [];
+        for (let i = 0; i < vies; i++) {
+            tableauDeVies.push(coeurPlein);
+        }
+        for (let i = 0; i < totalVies - vies; i++) {
+            tableauDeVies.push(coeurVide);
+        }
+        tableauDeVies.forEach(coeur => {
+            divVies.innerHTML += coeur;
+        })
+    }
+    actualiserCoeur(vies);
 }
+
+play();
