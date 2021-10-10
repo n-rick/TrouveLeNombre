@@ -17,9 +17,9 @@ Bon jeu à tous!
 
 ## Arborescence : 
 Le dossier contient 3 fichiers 
-l'index.html
-le style.css
-le app.js.
+- l'index.html
+- le style.css
+- le app.js.
 
 #### Commentaires
 N'hésitez pas à commenter. Toutes remarques constructivent est bonne à lire.
