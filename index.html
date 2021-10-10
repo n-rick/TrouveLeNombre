@@ -12,7 +12,7 @@
 <body>
     <div class="container">
         <h1>Trouve le nombre</h1>
-        <p>Trouve le bon nombre entre 0 et 100. Tu as 5 essais ! </p>
+        <p>Trouve le bon nombre entre 0 et 100.<span id="essais"></span> </p>
         <div class="vies">
             <ion-icon name="heart-dislike-outline"></ion-icon>
             <ion-icon id="coeurPlein" name="heart"></ion-icon>
@@ -21,11 +21,12 @@
         <form id="inputBox">
             <label for="number">Entrez un nombre :</label>
             <input type="number" id="number" min="0" max="100" required>
-            <button id="essayerBtn">Essayez ?</button>
-            <p id="message">Lorem ipsum dolor sit amet.</p>
+            <button id="essayerBtn">Essayez 🤔</button>
+            <p id="message"></p>
             <button id="rejouer">Rejouer ?</button>
         </form>
-        <p id="details">* Brûlant = &plusmn; 2; chaud = &plusmn; 5; Tiède = &plusmn; 10; Froid = + 10</p>
+        <p id="details">* 🔥 Brûlant = &plusmn; 2 | 🥵 Chaud = &plusmn; 5 | 😐 Tiède = &plusmn; 10 | ❄️ Froid = + 10</p>
+        <button id="tricherBtn">tricher</button>
     </div>
 
     <script src="./app.js"></script>
