@@ -7,6 +7,8 @@ const input = document.getElementById('number');
 const essayerBtn = document.getElementById('essayerBtn');
 const rejouerBtn = document.getElementById('rejouer');
 const body = document.getElementsByTagName('body')[0];
+const tricherBtn = document.getElementById('tricherBtn');
+const essais = document.getElementById("essais");
 
 
 // Modèle de coeurs
@@ -31,6 +33,8 @@ const play = () => {
     const randomNumber = Math.floor(Math.random() * 101)
     const totalVies = 6;
     let vies = totalVies;
+    tricherBtn.style.display = "none";
+    essais.textContent = ` Tu as ${vies} essais !`;
     // vérification test
     console.log(randomNumber);
 
@@ -44,25 +48,28 @@ const play = () => {
 
         if (valeurInput === randomNumber) {
             body.style.backgroundImage = bgWin;
+            message.style.color = "#02a12e";
             message.textContent = `BRAVO !!! Le nombre était bien ${randomNumber}`;
             rejouerBtn.style.display = "block";
+            essayerBtn.style.display = "none";
         }
         if (valeurInput !== randomNumber) {
             if (randomNumber < valeurInput + 3 && randomNumber > valeurInput - 3) {
                 body.style.backgroundImage = bgBrulant;
-                message.textContent = "C'est brûlant !!!  🔥🔥🔥";
+                message.textContent = "C'est brûlant !!!  🔥🔥🔥 *";
             } else if (randomNumber < valeurInput + 6 && randomNumber > valeurInput - 6) {
                 body.style.backgroundImage = bgChaud;
-                message.textContent = "C'est chaud !  🥵";
+                message.textContent = "C'est chaud !  🥵 *";
             } else if (randomNumber < valeurInput + 10 && randomNumber > valeurInput - 10) {
                 body.style.backgroundImage = bgTiede;
-                message.textContent = "C'est tiède !  😐";
+                message.textContent = "C'est tiède !  😐 *";
             } else {
                 body.style.backgroundImage = bgFroid;
-                message.textContent = "C'est froid...  🥶❄️❄️";
+                message.textContent = "C'est froid...  🥶❄️❄️ *";
             }
             vies--;
             verifyLoose();
+            tricher();
         }
 
         actualiserCoeur(vies);
@@ -71,7 +78,7 @@ const play = () => {
         if (vies === 0) {
             body.style.backgroundImage = bgLoose;
             body.style.color = '#990000';
-            essayerBtn.setAttribute("disabled", "");
+            essayerBtn.style.display = "none";
             message.textContent = `Vous avez perdu 😢 ! La réponse était ${randomNumber}`;
             rejouerBtn.style.display = "block";
         }
@@ -85,12 +92,36 @@ const play = () => {
         }
         for (let i = 0; i < totalVies - vies; i++) {
             tableauDeVies.push(coeurVide);
+            essais.textContent = ` Tu as ${vies} essais !`;
+            if (vies === 0) {
+                essais.textContent = "";
+            }
         }
         tableauDeVies.forEach(coeur => {
             divVies.innerHTML += coeur;
         })
     }
     actualiserCoeur(vies);
+
+    rejouerBtn.addEventListener('click', () => {
+        message.style.display = "none";
+        document.location.reload(true);
+    })
+
+    tricherBtn.addEventListener('click', () => {
+        tricherBtn.style.display = "none";
+        let maxNumber = randomNumber + 10;
+        let minNumber = randomNumber - 10;
+        message.textContent = `Le nombre à trouver est compris entre ${minNumber} et ${maxNumber}`;
+
+    })
+
+    const tricher = () => {
+        if (vies === 2) {
+            tricherBtn.style.display = "block";
+            message.textContent = `il vous reste ${vies} vies, vous souhaitez tricher?`;
+        }
+    }
 }
 
 play();
