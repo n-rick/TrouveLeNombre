@@ -24,4 +24,5 @@ Le dossier contient 3 fichiers
 #### Commentaires
 N'hésitez pas à commenter. Toutes remarques constructivent est bonne à lire.
 Merci.
-#### N-rick
+#### CREDIT
+Enrick FICADIERE | n-rick | 2iTech Academy | 2021
